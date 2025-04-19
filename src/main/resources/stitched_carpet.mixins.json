@@ -1,0 +1,13 @@
+{
+	"required": true,
+	"package": "stitched_carpet.mixins",
+	"compatibilityLevel": "JAVA_8",
+	"mixins": [
+		"ShulkerMixin",
+		"ShulkerBulletMixin",
+		"EntityMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

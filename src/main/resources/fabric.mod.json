@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "stitched_carpet",
+	"version": "${version}",
+	"name": "Stitched Carpet",
+	"description": "Forwards and backwards porting interesting technical features to Minecraft 1.15.2, and some other fun flags.",
+	"authors": [
+		"xiej2520"
+	],
+	"contact": {
+		"homepage": "https://github.com/xiej2520/stitched_carpet",
+		"sources": "https://github.com/xiej2520/stitched_carpet"
+	},
+	"license": "LGPL-3.0",
+	"icon": "assets/stitched_carpet/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"stitched_carpet.StitchedCarpetServer"
+		]
+	},
+	"mixins": [
+		"stitched_carpet.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.7.1",
+		"minecraft": "~1.15.2",
+		"carpet": ">=1.4.8",
+		"java": ">=17",
+		"fabric": "*"
+	},
+	"custom": {
+		"modmenu": {
+			"parent": "carpet"
+		}
+	}
+}
