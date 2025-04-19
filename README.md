@@ -37,6 +37,18 @@ shulkers will check face of the block they are attached to, instead of the top f
 Technically MC-183884 was introduced in 1.16 snapshots, hopefully I didn't introduce it while fixing
 the other bugs...
 
+
+### QoL/Fun
+
+#### instantMiningGold
+
+Instant mining gold with iron and diamond pickaxes. Fast beacon mining and replacement for resin scaffholding.
+
+- Type: `boolean`
+- Default value: `false`
+- Required options: `true`, `false`
+- Categories: `survival`
+
 ## License
 
 LGPL

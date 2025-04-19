@@ -5,7 +5,8 @@
 	"mixins": [
 		"ShulkerMixin",
 		"ShulkerBulletMixin",
-		"EntityMixin"
+		"EntityMixin",
+		"instantmining.InstantMineGoldMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

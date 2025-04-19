@@ -25,4 +25,14 @@ public class StitchedCarpetSettings {
             category = {"shulkerclone", "mobs", "backport", RuleCategory.BUGFIX}
     )
     public static boolean shulkerBehaviorFix = false;
+
+    // Instant mining Gold
+    @Rule(
+            desc = "Instant Mining Gold Blocks",
+            extra = {
+                    "Allows Gold Blocks to be instantly mined with iron and diamond pickaxes.",
+            },
+            category = {RuleCategory.SURVIVAL}
+    )
+    public static boolean instantMiningGold = false;
 }
