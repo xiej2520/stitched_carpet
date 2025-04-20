@@ -137,4 +137,22 @@ public class BlockList {
             //Blocks.CRIMSON_STAIRS,
             //Blocks.WARPED_STAIRS);
     );
+    public static List<Block> concrete = Arrays.asList(
+            Blocks.WHITE_CONCRETE,
+            Blocks.LIGHT_GRAY_CONCRETE,
+            Blocks.GRAY_CONCRETE,
+            Blocks.BLACK_CONCRETE,
+            Blocks.BROWN_CONCRETE,
+            Blocks.RED_CONCRETE,
+            Blocks.ORANGE_CONCRETE,
+            Blocks.YELLOW_CONCRETE,
+            Blocks.LIME_CONCRETE,
+            Blocks.GREEN_CONCRETE,
+            Blocks.LIGHT_BLUE_CONCRETE,
+            Blocks.CYAN_CONCRETE,
+            Blocks.BLUE_CONCRETE,
+            Blocks.PURPLE_CONCRETE,
+            Blocks.MAGENTA_CONCRETE,
+            Blocks.PINK_CONCRETE
+    );
 }

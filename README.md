@@ -104,6 +104,15 @@ Based off of implementation from Carpet-Addons-Not-Found and Vanilla 1.16.5.
 - Required options: `true`, `false`
 - Categories: `survival`
 
+#### instantMiningConcrete
+
+A Diamond Pickaxe with Efficiency V and Haste II will instant mine concrete.
+Based off of implementation from Carpet-Addons-Not-Found and Vanilla 1.16.5.
+
+- Type: `boolean`
+- Default value: `false`
+- Required options: `true`, `false`
+- Categories: `survival`
 
 #### endPlatformSpawnPoint
 

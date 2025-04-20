@@ -54,7 +54,15 @@ public interface InstantMiningRatioCalculator {
                 3,
                 ToolMaterials.DIAMOND,
                 ToolMaterials.GOLD,
-                new HashSet<>(BlockList.wood));
+                new HashSet<>(BlockList.wood)),
+        DiamondPickaxeConcrete(
+                InstantMiningCarpetRuleKeys.instantMiningConcrete,
+                PickaxeItem.class,
+                2,
+                3,
+                ToolMaterials.DIAMOND,
+                ToolMaterials.GOLD,
+                new HashSet<>(BlockList.concrete));
 
         //NetheriteAxeWood(
         //        InstantMiningCarpetRuleKeys.netheriteAxeWood,

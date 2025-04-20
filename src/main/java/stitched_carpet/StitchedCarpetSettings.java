@@ -67,6 +67,10 @@ public class StitchedCarpetSettings {
           category = {SURVIVAL, "instamine"})
     public static boolean instantMiningWood = false;
 
+    @Rule(desc = "Instant Mining Concrete with Diamond Pickaxe with Efficiency V and Haste II",
+            category = {SURVIVAL, "instamine"})
+    public static boolean instantMiningConcrete = false;
+
 
     @Rule(desc = "Change the end platform spawn location. Use separated 'x,y,z', anything else uses default position.",
           category = {CREATIVE, FEATURE},

@@ -14,6 +14,8 @@ public class InstantMiningCarpetRuleAccessor {
         carpetRules = new HashMap<>();
         carpetRules.put(InstantMiningCarpetRuleKeys.instantMiningWood,
                 () -> StitchedCarpetSettings.instantMiningWood);
+        carpetRules.put(InstantMiningCarpetRuleKeys.instantMiningConcrete,
+                () -> StitchedCarpetSettings.instantMiningConcrete);
         //carpetRules.put(InstantMiningCarpetRuleKeys.netheriteAxeWood,
         //        () -> CarpetAddonsNotFoundSettings.netheriteAxeInstantMineWood);
         //carpetRules.put(InstantMiningCarpetRuleKeys.netheritePickaxeBlueIce,
@@ -31,6 +33,7 @@ public class InstantMiningCarpetRuleAccessor {
 
 class InstantMiningCarpetRuleKeys {
     public static final String instantMiningWood = "diamondAxeWood";
+    public static final String instantMiningConcrete = "diamondPickaxeConcrete";
     //public static final String netheriteAxeWood = "netheriteAxeWood";
     //public static final String netheritePickaxeBlueIce = "netheritePickaxeBlueIce";
     //public static final String netheritePickaxeCobblestone = "netheritePickaxeCobblestone";
