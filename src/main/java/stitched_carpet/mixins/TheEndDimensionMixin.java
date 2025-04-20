@@ -8,6 +8,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import stitched_carpet.StitchedCarpetServer;
 import stitched_carpet.StitchedCarpetSettings;
+import stitched_carpet.util.BlockPosParser;
 
 @Mixin(TheEndDimension.class)
 public abstract class TheEndDimensionMixin {
@@ -15,16 +16,8 @@ public abstract class TheEndDimensionMixin {
     @Inject(method = "getForcedSpawnPoint", at = @At("HEAD"), cancellable = true)
     public void getForcedSpawnPoint(CallbackInfoReturnable<BlockPos> cir) {
         if (!StitchedCarpetSettings.endPlatformSpawnPoint.equals("default")) {
-            try {
-                String[] split = StitchedCarpetSettings.endPlatformSpawnPoint.split(",");
-                double x = Double.parseDouble(split[0]);
-                double y = Double.parseDouble(split[1]);
-                double z = Double.parseDouble(split[2]);
-
-                cir.setReturnValue(new BlockPos(x, y, z));
-            } catch(NumberFormatException | ArrayIndexOutOfBoundsException e) {
-                StitchedCarpetServer.LOGGER.error("Invalid coordinates for end platform", StitchedCarpetSettings.endPlatformSpawnPoint);
-            }
+            // set return value if optional value present
+            BlockPosParser.parseBlockPos(StitchedCarpetSettings.endPlatformSpawnPoint).ifPresent(cir::setReturnValue);
         }
     }
 

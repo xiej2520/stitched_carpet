@@ -1,7 +1,7 @@
 {
 	"required": true,
 	"package": "stitched_carpet.mixins",
-	"compatibilityLevel": "JAVA_21",
+	"compatibilityLevel": "JAVA_17",
 	"mixins": [
 		"EntityMixin",
 		"ExperienceOrbEntityMixin",
@@ -12,6 +12,7 @@
 		"instant_mining.InstantMineGoldMixin",
 		"instant_mining.PlayerEntityInstantMineMixin",
 		"TheEndDimensionMixin",
+		"ServerPlayerMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

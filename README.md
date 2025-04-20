@@ -28,6 +28,7 @@ Fixes [MC-139265](https://bugs.mojang.com/browse/MC-139265) / [MC-168900](https:
 which makes shulkers use portals correctly, [MC-183884](https://bugs.mojang.com/browse/MC-183884) which allows shulkers
 to be next to each other without teleporting, [MC-159773](https://bugs.mojang.com/browse/MC/issues/MC-159773),
 shulkers will check face of the block they are attached to, instead of the top face.
+Some code from Farmable-Shulkers.
 
 - Type: `boolean`
 - Default value: `false`
@@ -45,6 +46,20 @@ Mending only repairs equipped damaged items, from 1.16+
 - Default value: `false`
 - Required options: `true`, `false`
 - Categories: `survival`, `backport`
+
+#### endPlatform
+
+When to generate obsidian platform in the end. Is `player` in 1.15.2, `all` in 1.16.5 in vanilla minecraft.
+Original implementation from Carpet-TCTC-Addition and Vanilla 1.16.5.
+
+- `all` - Generate end platform when all entities are transferred to the_end dimension.
+- `none` - End platform will not be generated anyway.
+- `player` - End platform is generated only when the player entity teleports to the_end dimension.
+
+- Type: enum
+- Default value: player
+- Requried options: all, none, player
+- Categories: `backport`, `bugfix`, `feature`
 
 ### Reintroduce
 
@@ -82,6 +97,7 @@ Instant mine gold blocks with iron and diamond pickaxes. Fast beacon mining and 
 #### instantMiningWood
 
 A Diamond Axe with Efficiency V and Haste II will instant mine wood.
+Based off of implementation from Carpet-Addons-Not-Found and Vanilla 1.16.5.
 
 - Type: `boolean`
 - Default value: `false`
@@ -91,14 +107,14 @@ A Diamond Axe with Efficiency V and Haste II will instant mine wood.
 
 #### endPlatformSpawnPoint
 
-Change the end platform spawn location. Use comma-separated 'x,y,z' or 'default'.
+Change the end platform spawn location. Use separated 'x,y,z', anything else uses default position.
 Note: this only works for going through the end portal to the end. Outer end gateways are configured at game launch time
 and it would take a lot more work to intercept that as a runtime configuration option. It would be relatively simple to
 make a standalone mod to do both.
 
 - Type: `string`
-- Default value: `default`
-- Categories: `creative`, `feature
+- Default value: ``
+- Categories: `creative`, `feature`
 
 ## License
 
@@ -106,6 +122,7 @@ CC0 1.0
 
 Code from this project has been taken from [minitweaks](https://github.com/manyrandomthings/minitweaks),
 [farmable-shulkers](https://github.com/Kira-NT/farmable-shulkers),
-[Carpet-Addons-Not-Found](https://github.com/Gilly7CE/Carpet-Addons-Not-Found) and modified.
+[Carpet-Addons-Not-Found](https://github.com/Gilly7CE/Carpet-Addons-Not-Found),
+[Carpet-TCTC-Addition](https://github.com/The-Cat-Town-Craft/Carpet-TCTC-Addition) and modified.
 Some backport code is from yarn mappings of Mojang code.
 

@@ -12,6 +12,8 @@ public class StitchedCarpetServer implements CarpetExtension, ModInitializer {
     public static SettingsManager settingsManager;
     public static final Logger LOGGER = LogManager.getLogger(StitchedCarpetServer.class);
     public static final String MOD_ID = "stitched_carpet";
+    public static final String FANCY_NAME = "StitchedCarpet";
+    public static final String VERSION = "0.1";
 
     @Override
     public void onInitialize() {
@@ -21,7 +23,7 @@ public class StitchedCarpetServer implements CarpetExtension, ModInitializer {
     @Override
     public void onGameStarted() {
         // create custom settingsManager
-        settingsManager = new SettingsManager(null, MOD_ID, "StitchedCarpet");
+        settingsManager = new SettingsManager(VERSION, MOD_ID, FANCY_NAME);
         settingsManager.parseSettingsClass(StitchedCarpetSettings.class);
 
         CarpetServer.settingsManager.parseSettingsClass(StitchedCarpetSettings.class);

@@ -1,8 +1,13 @@
 package stitched_carpet;
 
 import carpet.settings.Rule;
-import carpet.settings.RuleCategory;
-import net.minecraft.util.math.BlockPos;
+import static carpet.settings.RuleCategory.*;
+import static stitched_carpet.StitchedCarpetRuleCategory.*;
+
+class StitchedCarpetRuleCategory {
+    public static final String BACKPORT = "backport";
+    public static final String REINTRODUCE = "reintroduce";
+}
 
 public class StitchedCarpetSettings {
     @Rule(
@@ -10,7 +15,7 @@ public class StitchedCarpetSettings {
             extra = {
                     "A shulker hitting a shulker with a shulker bullet can make a new shulker",
             },
-            category = {"shulkerclone", "mobs", RuleCategory.SURVIVAL, "backport"}
+            category = {"shulkerclone", "mobs", SURVIVAL, BACKPORT}
     )
     public static boolean shulkerCloning = false;
 
@@ -21,33 +26,50 @@ public class StitchedCarpetSettings {
                     "to each other, and MC-159773, so shulkers properly teleport away from the faces of blocks",
                     "that aren't flat and allows them to attach to bottom slabs/stairs."
             },
-            category = {"shulkerclone", "mobs", "backport", RuleCategory.BUGFIX}
+            category = {"shulkerclone", "mobs", BACKPORT, BUGFIX}
     )
     public static boolean shulkerBehaviorFix = false;
 
-    @Rule(desc = "Mending only repairs equipped damaged items, from 1.16+.", category = {"backport", RuleCategory.SURVIVAL})
+    @Rule(desc = "Mending only repairs equipped damaged items, from 1.16+.", category = {"backport", SURVIVAL})
     public static boolean mendingOnlyDamaged = false;
+
+    @Rule(desc = "When to generate obsidian platform in the end.",
+          extra = {
+                  "all - Generate end platform when all entities are transferred to the_end dimension.",
+                  "none - End platform will not be generated.",
+                  "player - End platform is generated only when the player entity teleports to the_end dimension.",
+          },
+          category = {BACKPORT, BUGFIX, FEATURE}
+    )
+    public static EndPlatformOptions endPlatform = EndPlatformOptions.PLAYER;
+
+    public enum EndPlatformOptions {
+        ALL,
+        NONE,
+        PLAYER
+    }
 
 
     @Rule(desc = "Reintroduces infinity and mending stacking on bows from 1.9 - 1.11.",
-            category = {RuleCategory.SURVIVAL, "reintroduce"})
+            category = {SURVIVAL, REINTRODUCE})
     public static boolean infinityMendingStacking = false;
 
     @Rule(desc = "Reintroduces protection stacking on armor from 1.14 - 1.14.2. Works in enchanting table.",
-            category = {RuleCategory.SURVIVAL, "reintroduce"})
+            category = {SURVIVAL, REINTRODUCE})
     public static boolean protectionStacking = false;
 
 
     @Rule(desc = "Instant Mining Gold Blocks with iron and diamond pickaxes.",
-          category = {RuleCategory.SURVIVAL, "instamine"})
+          category = {SURVIVAL, "instamine"})
     public static boolean instantMiningGold = false;
 
     @Rule(desc = "Instant Mining Wood with Diamond Axe with Efficiency V and Haste II",
-          category = {RuleCategory.SURVIVAL, "instamine"})
+          category = {SURVIVAL, "instamine"})
     public static boolean instantMiningWood = false;
 
 
-    @Rule(desc = "Change the end platform spawn location. Use comma-separated 'x,y,z' or 'default'.",
-          category = {RuleCategory.CREATIVE, RuleCategory.FEATURE})
-    public static String endPlatformSpawnPoint = "default";
+    @Rule(desc = "Change the end platform spawn location. Use separated 'x,y,z', anything else uses default position.",
+          category = {CREATIVE, FEATURE},
+          strict = false)
+    public static String endPlatformSpawnPoint = "";
 }

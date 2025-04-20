@@ -11,7 +11,7 @@
 		"homepage": "https://github.com/xiej2520/stitched_carpet",
 		"sources": "https://github.com/xiej2520/stitched_carpet"
 	},
-	"license": "LGPL-3.0",
+	"license": "CC0 1.0 Universal",
 	"icon": "assets/stitched_carpet/icon.png",
 	"environment": "*",
 	"entrypoints": {
