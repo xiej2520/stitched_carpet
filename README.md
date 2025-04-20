@@ -37,6 +37,36 @@ shulkers will check face of the block they are attached to, instead of the top f
 Technically MC-183884 was introduced in 1.16 snapshots, hopefully I didn't introduce it while fixing
 the other bugs...
 
+#### mendingOnlyDamaged
+
+Mending only repairs equipped damaged items, from 1.16+
+
+- Type: `boolean`
+- Default value: `false`
+- Required options: `true`, `false`
+- Categories: `survival`, `backport`
+
+### Reintroduce
+
+#### infinityMendingStacking
+
+Allows infinity and mending enchantments to stack on bows like from 1.9 to 1.11.
+
+- Type: `boolean`
+- Default value: `false`
+- Required options: `true`, `false`
+- Categories: `survival`, `reintroduce`
+
+#### protectionStacking
+
+Allows different types of Protection enchantments to stack on bows like from 1.14 - 1.14.2.
+Works in enchanting table.
+
+- Type: `boolean`
+- Default value: `false`
+- Required options: `true`, `false`
+- Categories: `survival`, `reintroduce`
+
 
 ### QoL/Fun
 
@@ -57,6 +87,18 @@ A Diamond Axe with Efficiency V and Haste II will instant mine wood.
 - Default value: `false`
 - Required options: `true`, `false`
 - Categories: `survival`
+
+
+#### endPlatformSpawnPoint
+
+Change the end platform spawn location. Use comma-separated 'x,y,z' or 'default'.
+Note: this only works for going through the end portal to the end. Outer end gateways are configured at game launch time
+and it would take a lot more work to intercept that as a runtime configuration option. It would be relatively simple to
+make a standalone mod to do both.
+
+- Type: `string`
+- Default value: `default`
+- Categories: `creative`, `feature
 
 ## License
 

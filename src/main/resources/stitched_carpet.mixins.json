@@ -3,11 +3,15 @@
 	"package": "stitched_carpet.mixins",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ShulkerMixin",
-		"ShulkerBulletMixin",
 		"EntityMixin",
+		"ExperienceOrbEntityMixin",
+		"InfinityMendingStackingMixin",
+		"ProtectionStackingMixin",
+		"ShulkerBulletMixin",
+		"ShulkerMixin",
 		"instant_mining.InstantMineGoldMixin",
-		"instant_mining.PlayerEntityInstantMineMixin"
+		"instant_mining.PlayerEntityInstantMineMixin",
+		"TheEndDimensionMixin",
 	],
 	"injectors": {
 		"defaultRequire": 1

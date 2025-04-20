@@ -57,7 +57,7 @@ public abstract class ShulkerMixin extends GolemEntity {
     @Shadow
     private int field_7340; // teleportLerpTimer
 
-    protected ShulkerMixin(EntityType<? extends GolemEntity> entityType, World world) {
+    private ShulkerMixin(EntityType<? extends GolemEntity> entityType, World world) {
         super(entityType, world);
     }
 
