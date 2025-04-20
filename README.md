@@ -42,7 +42,16 @@ the other bugs...
 
 #### instantMiningGold
 
-Instant mining gold with iron and diamond pickaxes. Fast beacon mining and replacement for resin scaffholding.
+Instant mine gold blocks with iron and diamond pickaxes. Fast beacon mining and replacement for resin scaffholding.
+
+- Type: `boolean`
+- Default value: `false`
+- Required options: `true`, `false`
+- Categories: `survival`
+
+#### instantMiningWood
+
+A Diamond Axe with Efficiency V and Haste II will instant mine wood.
 
 - Type: `boolean`
 - Default value: `false`
@@ -51,9 +60,10 @@ Instant mining gold with iron and diamond pickaxes. Fast beacon mining and repla
 
 ## License
 
-LGPL
+CC0 1.0
 
 Code from this project has been taken from [minitweaks](https://github.com/manyrandomthings/minitweaks),
-[farmable-shulkers](https://github.com/Kira-NT/farmable-shulkers) and modified.
+[farmable-shulkers](https://github.com/Kira-NT/farmable-shulkers),
+[Carpet-Addons-Not-Found](https://github.com/Gilly7CE/Carpet-Addons-Not-Found) and modified.
 Some backport code is from yarn mappings of Mojang code.
 

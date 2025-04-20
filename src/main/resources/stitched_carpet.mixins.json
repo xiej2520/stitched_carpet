@@ -1,12 +1,13 @@
 {
 	"required": true,
 	"package": "stitched_carpet.mixins",
-	"compatibilityLevel": "JAVA_8",
+	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 		"ShulkerMixin",
 		"ShulkerBulletMixin",
 		"EntityMixin",
-		"instantmining.InstantMineGoldMixin"
+		"instant_mining.InstantMineGoldMixin",
+		"instant_mining.PlayerEntityInstantMineMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

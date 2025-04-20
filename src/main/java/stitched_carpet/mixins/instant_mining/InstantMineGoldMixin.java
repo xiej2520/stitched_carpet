@@ -1,4 +1,4 @@
-package stitched_carpet.mixins.instantmining;
+package stitched_carpet.mixins.instant_mining;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

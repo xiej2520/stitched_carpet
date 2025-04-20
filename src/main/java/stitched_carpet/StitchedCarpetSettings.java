@@ -4,7 +4,6 @@ import carpet.settings.Rule;
 import carpet.settings.RuleCategory;
 
 public class StitchedCarpetSettings {
-    // 1.17 shulker cloning
     @Rule(
             desc = "1.17 Shulker cloning",
             extra = {
@@ -14,7 +13,6 @@ public class StitchedCarpetSettings {
     )
     public static boolean shulkerCloning = false;
 
-    // Shulker behavior fixes
     @Rule(
             desc = "Shulker behavior fixes",
             extra = {
@@ -26,13 +24,11 @@ public class StitchedCarpetSettings {
     )
     public static boolean shulkerBehaviorFix = false;
 
-    // Instant mining Gold
-    @Rule(
-            desc = "Instant Mining Gold Blocks",
-            extra = {
-                    "Allows Gold Blocks to be instantly mined with iron and diamond pickaxes.",
-            },
-            category = {RuleCategory.SURVIVAL}
-    )
+    @Rule(desc = "Instant Mining Gold Blocks with iron and diamond pickaxes.",
+          category = {RuleCategory.SURVIVAL})
     public static boolean instantMiningGold = false;
+
+    @Rule(desc = "Instant Mining Wood with Diamond Axe with Efficiency V and Haste II",
+          category = {RuleCategory.SURVIVAL})
+    public static boolean instantMiningWood = false;
 }
