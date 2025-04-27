@@ -50,14 +50,20 @@ public abstract class EntityMixin implements TeleportableEntity {
             @Local(ordinal = 1) ServerWorld serverWorld2,
             @Local BlockPos blockPos
     ) {
-        if (StitchedCarpetSettings.endPlatform == StitchedCarpetSettings.EndPlatformOptions.ALL && newDimension == DimensionType.THE_END) {
+        if (StitchedCarpetSettings.endPlatformGeneration == StitchedCarpetSettings.EndPlatformOptions.ALL && newDimension == DimensionType.THE_END) {
             int i = blockPos.getX();
             int j = blockPos.getY() - 2;
             int k = blockPos.getZ();
             BlockPos.iterate(i - 2, j + 1, k - 2, i + 2, j + 3, k + 2).forEach((blockPos2) -> {
+                if (StitchedCarpetSettings.endPlatformDropsBlocks && serverWorld2.getBlockState(blockPos2) != Blocks.AIR.getDefaultState()) {
+                    serverWorld2.breakBlock(blockPos2, true);
+                }
                 serverWorld2.setBlockState(blockPos2, Blocks.AIR.getDefaultState());
             });
             BlockPos.iterate(i - 2, j, k - 2, i + 2, j, k + 2).forEach((blockPos2) -> {
+                if (StitchedCarpetSettings.endPlatformDropsBlocks && serverWorld2.getBlockState(blockPos2) != Blocks.OBSIDIAN.getDefaultState()) {
+                    serverWorld2.breakBlock(blockPos2, true);
+                }
                 serverWorld2.setBlockState(blockPos2, Blocks.OBSIDIAN.getDefaultState());
             });
         }

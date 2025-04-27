@@ -10,6 +10,8 @@ class StitchedCarpetRuleCategory {
 }
 
 public class StitchedCarpetSettings {
+
+    // Backport
     @Rule(
             desc = "1.17 Shulker cloning",
             extra = {
@@ -41,13 +43,18 @@ public class StitchedCarpetSettings {
           },
           category = {BACKPORT, BUGFIX, FEATURE}
     )
-    public static EndPlatformOptions endPlatform = EndPlatformOptions.PLAYER;
+    public static EndPlatformOptions endPlatformGeneration = EndPlatformOptions.PLAYER;
 
     public enum EndPlatformOptions {
         ALL,
         NONE,
         PLAYER
     }
+
+    @Rule(desc = "End platform drops blocks when generating like in 1.21. Note: block iteration order for end platform generation changed in 1.21, is different from here.",
+            category = {BACKPORT, FEATURE}
+    )
+    public static boolean endPlatformDropsBlocks = false;
 
     @Rule(desc = "Makes hoes a mining tool like 1.16+.",
           extra = {"Hoe harvests nether wart block, hay, sponge, dried kelp, and leaves, can be enchanted with Efficiency, Fortune and Silk Touch, and takes damage from breaking blocks like in 1.16."},
@@ -59,6 +66,9 @@ public class StitchedCarpetSettings {
     public static boolean shulkerBoxItemsDropContents = false;
 
 
+
+
+    // Reintroduce
     @Rule(desc = "Reintroduces infinity and mending stacking on bows from 1.9 - 1.11.",
             category = {SURVIVAL, REINTRODUCE})
     public static boolean infinityMendingStacking = false;
@@ -68,6 +78,7 @@ public class StitchedCarpetSettings {
     public static boolean protectionStacking = false;
 
 
+    // QoL/Fun
     @Rule(desc = "Instant Mining Gold Blocks with iron and diamond pickaxes.",
           category = {SURVIVAL, "instamine"})
     public static boolean instantMiningGold = false;
@@ -85,4 +96,8 @@ public class StitchedCarpetSettings {
           category = {CREATIVE, FEATURE},
           strict = false)
     public static String endPlatformSpawnPoint = "";
+
+    @Rule(desc = "Allows trading infinitely (resets uses).",
+          category = {SURVIVAL, FEATURE})
+    public static boolean infiniteTrades = false;
 }

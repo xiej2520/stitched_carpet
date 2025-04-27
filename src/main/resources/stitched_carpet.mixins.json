@@ -14,6 +14,7 @@
     "ShulkerBulletMixin",
     "ShulkerMixin",
     "TheEndDimensionMixin",
+    "TradeOfferMixin",
     "instant_mining.InstantMineGoldMixin",
     "instant_mining.PlayerEntityInstantMineMixin"
   ],

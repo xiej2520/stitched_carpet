@@ -52,7 +52,7 @@ Mending only repairs equipped damaged items, from 1.16+
 - Required options: `true`, `false`
 - Categories: `survival`, `backport`
 
-#### endPlatform
+#### endPlatformGeneration
 
 When to generate obsidian platform in the end. Is `player` in 1.15.2, `all` in 1.16.5 in vanilla minecraft.
 Original implementation from Carpet-TCTC-Addition and Vanilla 1.16.5.
@@ -65,6 +65,16 @@ Original implementation from Carpet-TCTC-Addition and Vanilla 1.16.5.
 - Default value: `player`
 - Required options: `all`, `none`, `player`
 - Categories: `backport`, `bugfix`, `feature`
+
+#### endPlatformDropsBlocks
+
+End platform drops blocks when generating like in 1.21. Note: block iteration order for end platform generation changed in 1.21, is different from here.
+From TISUnion/Carpet-TIS-Addition.
+
+- Type: `boolean`
+- Default value: `false`
+- Required options: `true`, `false`
+- Categories: `backport`, `feature`
 
 #### hoeMiningTool
 
@@ -150,6 +160,15 @@ make a standalone mod to do both.
 - Default value: ``
 - Categories: `creative`, `feature`
 
+#### infiniteTrades
+
+Allows trading infinitely (resets uses)
+
+- Type: `boolean`
+- Default value: `false`
+- Required options: `true`, `false`
+- Categories: `survival`, `feature`
+
 ## License
 
 CC0 1.0
@@ -157,6 +176,7 @@ CC0 1.0
 Code from this project has been taken from [minitweaks](https://github.com/manyrandomthings/minitweaks),
 [farmable-shulkers](https://github.com/Kira-NT/farmable-shulkers),
 [Carpet-Addons-Not-Found](https://github.com/Gilly7CE/Carpet-Addons-Not-Found),
-[Carpet-TCTC-Addition](https://github.com/The-Cat-Town-Craft/Carpet-TCTC-Addition) and modified.
+[Carpet-TCTC-Addition](https://github.com/The-Cat-Town-Craft/Carpet-TCTC-Addition),
+[Carpet-TIS-Addition](https://github.com/TISUnion/Carpet-TIS-Addition) and modified.
 Some backport code is from yarn mappings of Mojang code.
 

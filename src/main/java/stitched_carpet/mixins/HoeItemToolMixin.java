@@ -14,7 +14,7 @@ import java.util.Set;
 
 
 @Mixin(HoeItem.class)
-public class HoeItemToolMixin extends ToolItem {
+public abstract class HoeItemToolMixin extends ToolItem {
 
     private static final Set<Block> EFFECTIVE_BLOCKS = ImmutableSet.of(
             Blocks.NETHER_WART_BLOCK,

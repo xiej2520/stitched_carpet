@@ -19,7 +19,10 @@ public class ServerPlayerMixin {
             )
     )
     private boolean makeObsidianPlatform(ServerWorld serverWorld2, BlockPos blockPos, BlockState blockState) {
-        if (StitchedCarpetSettings.endPlatform != StitchedCarpetSettings.EndPlatformOptions.NONE) {
+        if (StitchedCarpetSettings.endPlatformGeneration != StitchedCarpetSettings.EndPlatformOptions.NONE) {
+            if (StitchedCarpetSettings.endPlatformDropsBlocks && serverWorld2.getBlockState(blockPos) != blockState) {
+                serverWorld2.breakBlock(blockPos, true);
+            }
             return serverWorld2.setBlockState(blockPos, blockState);
         }
         return false;
