@@ -74,8 +74,17 @@ Silk Touch, and takes damage from breaking blocks like in 1.16.
 
 - Type: `boolean`
 - Default value: `false`
-- Required options: `true`, `false
-- Categories: `survival`, `backport
+- Required options: `true`, `false`
+- Categories: `survival`, `backport`
+
+#### shulkerBoxItemsDropContents
+
+Shulker boxes drop contents when item entity is destroyed, from 1.17.
+
+- Type: `boolean`
+- Default value: `false`
+- Required options: `true`, `false`
+- Categories: `survival`, `backport`
 
 ### Reintroduce
 

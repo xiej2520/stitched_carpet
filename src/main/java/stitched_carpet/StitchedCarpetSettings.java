@@ -54,6 +54,10 @@ public class StitchedCarpetSettings {
           category = {"backport", SURVIVAL})
     public static boolean hoeMiningTool = false;
 
+    @Rule(desc = "Shulker boxes drop contents when item entity is destroyed, from 1.17.",
+            category = {"backport", SURVIVAL})
+    public static boolean shulkerBoxItemsDropContents = false;
+
 
     @Rule(desc = "Reintroduces infinity and mending stacking on bows from 1.9 - 1.11.",
             category = {SURVIVAL, REINTRODUCE})
