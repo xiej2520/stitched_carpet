@@ -38,6 +38,11 @@ Some code from Farmable-Shulkers.
 Technically MC-183884 was introduced in 1.16 snapshots, hopefully I didn't introduce it while fixing
 the other bugs...
 
+Note: there are many other mechanics that 1.17+ shulker farms depend on that break in 1.15:
+- Shulkers do not get ejected into the same spot from boats in 1.15-1.16 as they do in 1.17
+- Snowballs seem to have different hitboxes, they also cannot be shot from underneath scaffolding
+- Piston not pushing shulker properly in this implementation.
+
 #### mendingOnlyDamaged
 
 Mending only repairs equipped damaged items, from 1.16+
@@ -56,10 +61,21 @@ Original implementation from Carpet-TCTC-Addition and Vanilla 1.16.5.
 - `none` - End platform will not be generated anyway.
 - `player` - End platform is generated only when the player entity teleports to the_end dimension.
 
-- Type: enum
-- Default value: player
-- Requried options: all, none, player
+- Type: `enum`
+- Default value: `player`
+- Required options: `all`, `none`, `player`
 - Categories: `backport`, `bugfix`, `feature`
+
+#### hoeMiningTool
+
+Makes hoes a mining tool like 1.16+.
+Hoe harvests nether wart block, hay, sponge, dried kelp, and leaves, can be enchanted with Efficiency, Fortune and
+Silk Touch, and takes damage from breaking blocks like in 1.16.
+
+- Type: `boolean`
+- Default value: `false`
+- Required options: `true`, `false
+- Categories: `survival`, `backport
 
 ### Reintroduce
 
@@ -87,7 +103,7 @@ Works in enchanting table.
 
 #### instantMiningGold
 
-Instant mine gold blocks with iron and diamond pickaxes. Fast beacon mining and replacement for resin scaffholding.
+Instant mine gold blocks with iron and diamond pickaxes. Fast beacon mining and replacement for resin scaffolding.
 
 - Type: `boolean`
 - Default value: `false`
@@ -97,7 +113,7 @@ Instant mine gold blocks with iron and diamond pickaxes. Fast beacon mining and 
 #### instantMiningWood
 
 A Diamond Axe with Efficiency V and Haste II will instant mine wood.
-Based off of implementation from Carpet-Addons-Not-Found and Vanilla 1.16.5.
+Based off of implementation from Carpet-Addons-Not-Found.
 
 - Type: `boolean`
 - Default value: `false`
@@ -107,7 +123,7 @@ Based off of implementation from Carpet-Addons-Not-Found and Vanilla 1.16.5.
 #### instantMiningConcrete
 
 A Diamond Pickaxe with Efficiency V and Haste II will instant mine concrete.
-Based off of implementation from Carpet-Addons-Not-Found and Vanilla 1.16.5.
+Based off of implementation from Carpet-Addons-Not-Found.
 
 - Type: `boolean`
 - Default value: `false`

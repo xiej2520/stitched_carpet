@@ -49,6 +49,11 @@ public class StitchedCarpetSettings {
         PLAYER
     }
 
+    @Rule(desc = "Makes hoes a mining tool like 1.16+.",
+          extra = {"Hoe harvests nether wart block, hay, sponge, dried kelp, and leaves, can be enchanted with Efficiency, Fortune and Silk Touch, and takes damage from breaking blocks like in 1.16."},
+          category = {"backport", SURVIVAL})
+    public static boolean hoeMiningTool = false;
+
 
     @Rule(desc = "Reintroduces infinity and mending stacking on bows from 1.9 - 1.11.",
             category = {SURVIVAL, REINTRODUCE})

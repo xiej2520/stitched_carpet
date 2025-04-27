@@ -1,20 +1,22 @@
 {
-	"required": true,
-	"package": "stitched_carpet.mixins",
-	"compatibilityLevel": "JAVA_17",
-	"mixins": [
-		"EntityMixin",
-		"ExperienceOrbEntityMixin",
-		"InfinityMendingStackingMixin",
-		"ProtectionStackingMixin",
-		"ShulkerBulletMixin",
-		"ShulkerMixin",
-		"instant_mining.InstantMineGoldMixin",
-		"instant_mining.PlayerEntityInstantMineMixin",
-		"TheEndDimensionMixin",
-		"ServerPlayerMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
+  "required": true,
+  "package": "stitched_carpet.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "EnchantmentTargetDIGGER",
+    "EntityMixin",
+    "ExperienceOrbEntityMixin",
+    "HoeItemToolMixin",
+    "InfinityMendingStackingMixin",
+    "ProtectionStackingMixin",
+    "ServerPlayerMixin",
+    "ShulkerBulletMixin",
+    "ShulkerMixin",
+    "TheEndDimensionMixin",
+    "instant_mining.InstantMineGoldMixin",
+    "instant_mining.PlayerEntityInstantMineMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
 	}
 }
