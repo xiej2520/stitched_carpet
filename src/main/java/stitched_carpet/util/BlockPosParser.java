@@ -7,7 +7,7 @@ import java.util.Optional;
 public class BlockPosParser {
     public static Optional<BlockPos> parseBlockPos(String s) {
         try {
-            String[] split = s.split("\\D+"); // any non-digit character
+            String[] split = s.split("[,\\s]+"); // comma or whitespace
             double x = Double.parseDouble(split[0]);
             double y = Double.parseDouble(split[1]);
             double z = Double.parseDouble(split[2]);

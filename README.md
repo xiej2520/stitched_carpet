@@ -149,12 +149,27 @@ Based off of implementation from Carpet-Addons-Not-Found.
 - Required options: `true`, `false`
 - Categories: `survival`
 
+#### alwaysOpenBox
+
+Allows shulker boxes or chests to always be opened, even if there is a block or cat blocking it.
+
+- `shulker` - Shulker Boxes can always be opened, ignoring blocks in the way.
+- `chest` - Chests, trapped chests, and ender chests ignore blocks and cats in the way.
+- `both` - Both shulker boxes and chests can always be opened.
+- `none` - Default vanilla behavior.
+
+- Type: `enum`
+- Default value: `none`
+- Required options: `shulker`, `chest`, `both`, `none`
+- Categories: `feature`
+
 #### endPlatformSpawnPoint
 
 Change the end platform spawn location. Use separated 'x,y,z', anything else uses default position.
 Note: this only works for going through the end portal to the end. Outer end gateways are configured at game launch time
 and it would take a lot more work to intercept that as a runtime configuration option. It would be relatively simple to
 make a standalone mod to do both.
+Note 2: In Vanilla 1.15, players going Nether -> End keep their nether coordinates and generate an obsidian platform underneath them.
 
 - Type: `string`
 - Default value: ``

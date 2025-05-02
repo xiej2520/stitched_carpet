@@ -1,12 +1,21 @@
 package stitched_carpet;
 
+import carpet.CarpetServer;
+import carpet.settings.ParsedRule;
 import carpet.settings.Rule;
+import carpet.settings.Validator;
+import net.minecraft.server.command.ServerCommandSource;
+import stitched_carpet.util.BlockPosParser;
+
+import java.util.Objects;
+
 import static carpet.settings.RuleCategory.*;
 import static stitched_carpet.StitchedCarpetRuleCategory.*;
 
 class StitchedCarpetRuleCategory {
     public static final String BACKPORT = "backport";
     public static final String REINTRODUCE = "reintroduce";
+    public static final String INSTANTMINE = "instantmine";
 }
 
 public class StitchedCarpetSettings {
@@ -37,9 +46,9 @@ public class StitchedCarpetSettings {
 
     @Rule(desc = "When to generate obsidian platform in the end.",
           extra = {
-                  "all - Generate end platform when all entities are transferred to the_end dimension.",
+                  "all - Generate end platform when all entities are transferred to the_end dimension. 1.16+ behavior",
                   "none - End platform will not be generated.",
-                  "player - End platform is generated only when the player entity teleports to the_end dimension.",
+                  "player - End platform is generated only when the player entity teleports to the_end dimension. 1.15 and before behavior.",
           },
           category = {BACKPORT, BUGFIX, FEATURE}
     )
@@ -51,18 +60,18 @@ public class StitchedCarpetSettings {
         PLAYER
     }
 
-    @Rule(desc = "End platform drops blocks when generating like in 1.21. Note: block iteration order for end platform generation changed in 1.21, is different from here.",
+    @Rule(desc = "End platform drops blocks when generating, from 1.21. Note: block iteration order for end platform generation changed in 1.21, is different from here.",
             category = {BACKPORT, FEATURE}
     )
     public static boolean endPlatformDropsBlocks = false;
 
-    @Rule(desc = "Makes hoes a mining tool like 1.16+.",
+    @Rule(desc = "Makes hoes a mining tool, from 1.16.",
           extra = {"Hoe harvests nether wart block, hay, sponge, dried kelp, and leaves, can be enchanted with Efficiency, Fortune and Silk Touch, and takes damage from breaking blocks like in 1.16."},
-          category = {"backport", SURVIVAL})
+          category = {BACKPORT, SURVIVAL})
     public static boolean hoeMiningTool = false;
 
     @Rule(desc = "Shulker boxes drop contents when item entity is destroyed, from 1.17.",
-            category = {"backport", SURVIVAL})
+            category = {BACKPORT, SURVIVAL})
     public static boolean shulkerBoxItemsDropContents = false;
 
 
@@ -80,21 +89,48 @@ public class StitchedCarpetSettings {
 
     // QoL/Fun
     @Rule(desc = "Instant Mining Gold Blocks with iron and diamond pickaxes.",
-          category = {SURVIVAL, "instamine"})
+          category = {SURVIVAL, INSTANTMINE})
     public static boolean instantMiningGold = false;
 
     @Rule(desc = "Instant Mining Wood with Diamond Axe with Efficiency V and Haste II",
-          category = {SURVIVAL, "instamine"})
+          category = {SURVIVAL, INSTANTMINE})
     public static boolean instantMiningWood = false;
 
     @Rule(desc = "Instant Mining Concrete with Diamond Pickaxe with Efficiency V and Haste II",
-            category = {SURVIVAL, "instamine"})
+            category = {SURVIVAL, INSTANTMINE})
     public static boolean instantMiningConcrete = false;
 
+    @Rule(desc = "Allows shulker boxes or chests to always be opened, even if there is a block or cat blocking it.",
+          category = {FEATURE})
+    public static BoxOpenOptions alwaysOpenBox = BoxOpenOptions.NONE;
+
+    public enum BoxOpenOptions {
+        SHULKER,
+        CHEST,
+        BOTH,
+        NONE
+    }
+
+
+    public static class CoordinateVerifier extends Validator<String> {
+        @Override
+        public String validate(ServerCommandSource source, ParsedRule<String> currentRule, String newValue, String string) {
+            if (source == null || Objects.equals(newValue, "default") || CarpetServer.minecraft_server == null) {
+                return "default";
+            }
+            var parsed = BlockPosParser.parseBlockPos(newValue);
+            if (parsed.isEmpty()) {
+                //Messenger.m(source, "r Coordinate input was not valid x,y,z string");
+                return "default";
+            }
+            return newValue;
+        }
+    }
 
     @Rule(desc = "Change the end platform spawn location. Use separated 'x,y,z', anything else uses default position.",
           category = {CREATIVE, FEATURE},
-          strict = false)
+          strict = false,
+          validate = CoordinateVerifier.class)
     public static String endPlatformSpawnPoint = "";
 
     @Rule(desc = "Allows trading infinitely (resets uses).",

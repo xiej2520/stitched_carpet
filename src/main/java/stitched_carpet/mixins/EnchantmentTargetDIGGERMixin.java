@@ -10,7 +10,7 @@ import stitched_carpet.StitchedCarpetSettings;
 
 // EnchantmentTarget.DIGGER
 @Mixin(targets = "net/minecraft/enchantment/EnchantmentTarget$13")
-public abstract class EnchantmentTargetDIGGER {
+public abstract class EnchantmentTargetDIGGERMixin {
 
     @Inject(method = "isAcceptableItem", at = @At("HEAD"), cancellable = true)
     public void hoeAcceptableDigger(Item item, CallbackInfoReturnable<Boolean> cir) {

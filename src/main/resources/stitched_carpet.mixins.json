@@ -3,7 +3,9 @@
   "package": "stitched_carpet.mixins",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "EnchantmentTargetDIGGER",
+    "ChestBlockMixin",
+    "EnchantmentTargetDIGGERMixin",
+    "EnderChestBlockMixin",
     "EntityMixin",
     "ExperienceOrbEntityMixin",
     "HoeItemToolMixin",
@@ -11,6 +13,7 @@
     "ItemEntityMixin",
     "ProtectionStackingMixin",
     "ServerPlayerMixin",
+    "ShulkerBoxBlockMixin",
     "ShulkerBulletMixin",
     "ShulkerMixin",
     "TheEndDimensionMixin",
