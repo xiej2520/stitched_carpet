@@ -74,7 +74,13 @@ public class StitchedCarpetSettings {
             category = {BACKPORT, SURVIVAL})
     public static boolean shulkerBoxItemsDropContents = false;
 
-
+    @Rule(desc = "Several bee behavior fixes",
+          extra = {"MC-166135: baby bees don't age and bees don't reset breeding timer when leaving hive, fixed in 1.16.",
+                  "MC-168329: bees don't leave their hives in the Nether or End when first placed or if world is saved while raining, fixed in 1.21.2.",
+                  "MC-178119: bees go into beehive/nest when it rains in Overworld, even in biomes where rain doesn't fall."
+          },
+          category = {BACKPORT, BUGFIX})
+    public static boolean beeFixes = false;
 
 
     // Reintroduce

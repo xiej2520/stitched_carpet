@@ -22,6 +22,7 @@
 	"mixins": [
 		"stitched_carpet.mixins.json"
 	],
+	"accessWidener": "stitched_carpet.accesswidener",
 	"depends": {
 		"fabricloader": ">=0.7.1",
 		"minecraft": "~1.15.2",

@@ -65,6 +65,10 @@ jar {
 	}
 }
 
+loom {
+	accessWidenerPath = file("src/main/resources/stitched_carpet.accesswidener")
+}
+
 // configure the maven publication
 publishing {
 	publications {

@@ -3,6 +3,7 @@
   "package": "stitched_carpet.mixins",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "AnimalEntityAccessor",
     "ChestBlockMixin",
     "EnchantmentTargetDIGGERMixin",
     "EnderChestBlockMixin",
@@ -18,6 +19,9 @@
     "ShulkerMixin",
     "TheEndDimensionMixin",
     "TradeOfferMixin",
+    "bees.BeeEntityMixin",
+    "bees.BeeEntityMixin$PollinateGoalMixin",
+    "bees.BeeHiveBlockEntityMixin",
     "instant_mining.InstantMineGoldMixin",
     "instant_mining.PlayerEntityInstantMineMixin"
   ],

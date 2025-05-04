@@ -96,6 +96,18 @@ Shulker boxes drop contents when item entity is destroyed, from 1.17.
 - Required options: `true`, `false`
 - Categories: `survival`, `backport`
 
+#### beeFixes
+
+Several bee behavior fixes:
+- MC-166135: baby bees don't age and bees don't reset breeding timer when leaving hive, fixed in 1.16.
+- MC-168329: bees don't leave their hives in the Nether or End when first placed or if world is saved while raining, fixed in 1.21.2.
+- MC-178119: bees go into beehive/nest when it rains in Overworld, even in biomes where rain doesn't fall.
+
+- Type: `boolean`
+- Default value: `false`
+- Required options: `true`, `false`
+- Categories: `backport`, `bugfix`
+
 ### Reintroduce
 
 #### infinityMendingStacking
@@ -192,6 +204,7 @@ Code from this project has been taken from [minitweaks](https://github.com/manyr
 [farmable-shulkers](https://github.com/Kira-NT/farmable-shulkers),
 [Carpet-Addons-Not-Found](https://github.com/Gilly7CE/Carpet-Addons-Not-Found),
 [Carpet-TCTC-Addition](https://github.com/The-Cat-Town-Craft/Carpet-TCTC-Addition),
-[Carpet-TIS-Addition](https://github.com/TISUnion/Carpet-TIS-Addition) and modified.
+[Carpet-TIS-Addition](https://github.com/TISUnion/Carpet-TIS-Addition),
+[carpet-fixes](https://github.com/FxMorin/carpet-fixes) and modified.
 Some backport code is from yarn mappings of Mojang code.
 
