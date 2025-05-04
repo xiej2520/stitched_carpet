@@ -1,13 +1,19 @@
 package stitched_carpet.mixins;
 
 import com.google.common.collect.ImmutableSet;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.HoeItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ToolItem;
+import net.minecraft.item.ToolMaterial;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import stitched_carpet.StitchedCarpetSettings;
 
 import java.util.Set;
@@ -16,6 +22,7 @@ import java.util.Set;
 @Mixin(HoeItem.class)
 public abstract class HoeItemToolMixin extends ToolItem {
 
+    @Unique
     private static final Set<Block> EFFECTIVE_BLOCKS = ImmutableSet.of(
             Blocks.NETHER_WART_BLOCK,
             Blocks.HAY_BLOCK,

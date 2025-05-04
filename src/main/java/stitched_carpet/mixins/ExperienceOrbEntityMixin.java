@@ -2,12 +2,10 @@ package stitched_carpet.mixins;
 
 import com.google.common.collect.Lists;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
@@ -31,13 +29,32 @@ import static net.minecraft.enchantment.EnchantmentHelper.getLevel;
 public abstract class ExperienceOrbEntityMixin extends Entity {
 
     @Shadow
-    private int amount;
-
-    @Shadow
     public int pickupDelay;
+    @Shadow
+    private int amount;
 
     private ExperienceOrbEntityMixin(EntityType<?> type, World world) {
         super(type, world);
+    }
+
+    @Nullable
+    @Unique
+    private static Map.Entry<EquipmentSlot, ItemStack> chooseEquipmentWith(Enchantment enchantment, LivingEntity entity, Predicate<ItemStack> condition) {
+        Map<EquipmentSlot, ItemStack> map = enchantment.getEquipment(entity);
+        if (map.isEmpty()) {
+            return null;
+        } else {
+            var list = Lists.<Map.Entry<EquipmentSlot, ItemStack>>newArrayList();
+
+            for (Map.Entry<EquipmentSlot, ItemStack> entry : map.entrySet()) {
+                ItemStack itemStack = entry.getValue();
+                if (!itemStack.isEmpty() && getLevel(enchantment, itemStack) > 0 && condition.test(itemStack)) {
+                    list.add(entry);
+                }
+            }
+
+            return list.isEmpty() ? null : list.get(entity.getRandom().nextInt(list.size()));
+        }
     }
 
     @Inject(method = "onPlayerCollision", at = @At("HEAD"), cancellable = true)
@@ -65,26 +82,6 @@ public abstract class ExperienceOrbEntityMixin extends Entity {
                 }
             }
             ci.cancel();
-        }
-    }
-
-    @Nullable
-    @Unique
-    private static Map.Entry<EquipmentSlot, ItemStack> chooseEquipmentWith(Enchantment enchantment, LivingEntity entity, Predicate<ItemStack> condition) {
-        Map<EquipmentSlot, ItemStack> map = enchantment.getEquipment(entity);
-        if (map.isEmpty()) {
-            return null;
-        } else {
-            var list = Lists.<Map.Entry<EquipmentSlot, ItemStack>>newArrayList();
-
-            for (Map.Entry<EquipmentSlot, ItemStack> entry : map.entrySet()) {
-                ItemStack itemStack = entry.getValue();
-                if (!itemStack.isEmpty() && getLevel(enchantment, itemStack) > 0 && condition.test(itemStack)) {
-                    list.add(entry);
-                }
-            }
-
-            return list.isEmpty() ? null : list.get(entity.getRandom().nextInt(list.size()));
         }
     }
 

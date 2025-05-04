@@ -14,38 +14,6 @@ import java.util.HashSet;
 public interface InstantMiningRatioCalculator {
     float getInstantMiningRatio(BlockState blockState, Item mainHand);
 
-    class HasteInstantMiningRatioCalculator {
-        public static float getRatio(
-                int originalHasteLevel,
-                int newHasteLevel,
-                ToolMaterial originalMiningToolMaterial,
-                ToolMaterial newMiningToolMaterial) {
-            float miningToolMaterialRatio =
-                    newMiningToolMaterial.getMiningSpeed() / originalMiningToolMaterial.getMiningSpeed();
-            // Formula for the ratio using the original and new haste levels
-            float hasteRatio = (float) (5 + newHasteLevel) / (float) (5 + originalHasteLevel);
-            return miningToolMaterialRatio * hasteRatio;
-        }
-    }
-
-    class BlockBreakingSpeedRatioCalculator {
-        public static float getBlockBreakingSpeedRatio(LivingEntity livingEntity, BlockState blockState) {
-            int efficiencyLevel = EnchantmentHelper.getEfficiency(livingEntity);
-            int hasteAmplifier = StatusEffectUtil.getHasteAmplifier(livingEntity);
-            ItemStack mainHand = livingEntity.getEquippedStack(EquipmentSlot.MAINHAND);
-
-            if (!StatusEffectUtil.hasHaste(livingEntity)
-                    || mainHand.isEmpty()
-                    || efficiencyLevel < 5
-                    || hasteAmplifier < 1) {
-                return 1.0f;
-            }
-
-            var instantMiningRatioCalculator = new CompositeInstantMiningRatioCalculator();
-            return instantMiningRatioCalculator.getInstantMiningRatio(blockState, mainHand.getItem());
-        }
-    }
-
     enum ToolInstantMiningRatioCalculator implements InstantMiningRatioCalculator {
         DiamondAxeWood(
                 InstantMiningCarpetRuleKeys.instantMiningWood,
@@ -166,6 +134,38 @@ public interface InstantMiningRatioCalculator {
             }
 
             return miningToolItem.getMaterial() == this.originalHasteToolMaterial;
+        }
+    }
+
+    class HasteInstantMiningRatioCalculator {
+        public static float getRatio(
+                int originalHasteLevel,
+                int newHasteLevel,
+                ToolMaterial originalMiningToolMaterial,
+                ToolMaterial newMiningToolMaterial) {
+            float miningToolMaterialRatio =
+                    newMiningToolMaterial.getMiningSpeed() / originalMiningToolMaterial.getMiningSpeed();
+            // Formula for the ratio using the original and new haste levels
+            float hasteRatio = (float) (5 + newHasteLevel) / (float) (5 + originalHasteLevel);
+            return miningToolMaterialRatio * hasteRatio;
+        }
+    }
+
+    class BlockBreakingSpeedRatioCalculator {
+        public static float getBlockBreakingSpeedRatio(LivingEntity livingEntity, BlockState blockState) {
+            int efficiencyLevel = EnchantmentHelper.getEfficiency(livingEntity);
+            int hasteAmplifier = StatusEffectUtil.getHasteAmplifier(livingEntity);
+            ItemStack mainHand = livingEntity.getEquippedStack(EquipmentSlot.MAINHAND);
+
+            if (!StatusEffectUtil.hasHaste(livingEntity)
+                    || mainHand.isEmpty()
+                    || efficiencyLevel < 5
+                    || hasteAmplifier < 1) {
+                return 1.0f;
+            }
+
+            var instantMiningRatioCalculator = new CompositeInstantMiningRatioCalculator();
+            return instantMiningRatioCalculator.getInstantMiningRatio(blockState, mainHand.getItem());
         }
     }
 

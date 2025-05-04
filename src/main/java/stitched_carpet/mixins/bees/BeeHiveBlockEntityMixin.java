@@ -25,7 +25,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import stitched_carpet.StitchedCarpetServer;
 import stitched_carpet.StitchedCarpetSettings;
 import stitched_carpet.mixins.AnimalEntityAccessor;
 
@@ -40,6 +39,7 @@ public abstract class BeeHiveBlockEntityMixin extends BlockEntity {
     @Shadow
     @Nullable
     private BlockPos flowerPos = null;
+
     public BeeHiveBlockEntityMixin(BlockEntityType<?> type) {
         super(type);
     }
@@ -54,7 +54,6 @@ public abstract class BeeHiveBlockEntityMixin extends BlockEntity {
 
     @Unique
     private void ageBee(int ticks, BeeEntity bee) {
-        StitchedCarpetServer.LOGGER.info("aging {} by {} ticks; {}", bee, ticks, bee.getBreedingAge());
         int i = bee.getBreedingAge();
         if (i < 0) {
             bee.setBreedingAge(Math.min(0, i + ticks));
@@ -64,9 +63,9 @@ public abstract class BeeHiveBlockEntityMixin extends BlockEntity {
 
         bee.setLoveTicks(Math.max(0, ((AnimalEntityAccessor) bee).getLoveTicks() - ticks));
         bee.resetPollinationTicks();
-        StitchedCarpetServer.LOGGER.info("new bee {} age {}", bee, bee.getBreedingAge());
     }
 
+    // inject into lambda calling releaseBee()
     @Inject(method = "method_21854", at = @At("HEAD"), cancellable = true)
     private void tryReleaseBeeFix(BlockState blockState, List<Entity> list, BeehiveBlockEntity.BeeState beeState, BeehiveBlockEntity.Bee bee, CallbackInfoReturnable<Boolean> cir) {
         if (StitchedCarpetSettings.beeFixes) {
@@ -81,7 +80,7 @@ public abstract class BeeHiveBlockEntityMixin extends BlockEntity {
             BlockState blockState = this.getCachedState();
 
             while (iterator.hasNext()) {
-                BeehiveBlockEntity.Bee bee = (BeehiveBlockEntity.Bee) iterator.next();
+                BeehiveBlockEntity.Bee bee = iterator.next();
                 if (bee.ticksInHive > bee.minOccupationTIcks) {
                     CompoundTag compoundTag = bee.entityData;
                     BeehiveBlockEntity.BeeState beeState = compoundTag.getBoolean("HasNectar")

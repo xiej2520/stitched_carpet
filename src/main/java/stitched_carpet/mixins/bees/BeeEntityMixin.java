@@ -6,7 +6,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.BeeEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
@@ -21,21 +20,18 @@ import stitched_carpet.util.RainCheckAccessor;
 // From FxMorin/carpet-fixes
 // Fixes MC-178119
 
-/**
- * Fix makes it so that the bee only enters hive if either its raining where it currently is or its raining next
- * to the hive. Instead of sitting in the rain and contemplating life
- */
+// Fix makes it so that the bee only enters hive if either its raining where it currently is, on the
+// hive, or in front of the hive.
 @Mixin(BeeEntity.class)
 public abstract class BeeEntityMixin extends Entity implements RainCheckAccessor {
-
-    public BeeEntityMixin(EntityType<?> type, World world) {
-        super(type, world);
-    }
 
     @Shadow
     @Nullable
     private BlockPos hivePos;
 
+    public BeeEntityMixin(EntityType<?> type, World world) {
+        super(type, world);
+    }
 
     @Unique
     public boolean rainCheck(World world) {
@@ -43,6 +39,7 @@ public abstract class BeeEntityMixin extends Entity implements RainCheckAccessor
         // for the dimension, so the Nether is treated as raining. See MC-178119 bug report for details.
 
         // change to check for rain on the block the bee, its beehive, or block beehive is facing instead
+        // hopefully isn't too laggy
         if (StitchedCarpetSettings.beeFixes) {
             if (world.hasRain(this.getBlockPos())) {
                 return true;
@@ -98,7 +95,5 @@ public abstract class BeeEntityMixin extends Entity implements RainCheckAccessor
         private boolean canBeeContinueFix(World world) {
             return ((RainCheckAccessor) field_20377).rainCheck(world);
         }
-
     }
-
 }

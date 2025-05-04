@@ -33,7 +33,7 @@ import java.util.UUID;
  *         even if another entity got in the way.
  *     </li>
  * </ul>
- *
+ * <p>
  * This mixin fixes both issues.
  */
 @Mixin(ShulkerBulletEntity.class)
@@ -63,13 +63,14 @@ public abstract class ShulkerBulletMixin extends Entity {
 
     /**
      * Returns the owner of the bullet, if any; otherwise, null.
+     *
      * @return The owner of the bullet, if any; otherwise, null.
      */
     private Entity getOwner() {
         if (this.owner == null && this.ownerUuid != null && this.world instanceof ServerWorld) {
-            Entity entityWithOwnerUuid = ((ServerWorld)this.world).getEntity(this.ownerUuid);
+            Entity entityWithOwnerUuid = ((ServerWorld) this.world).getEntity(this.ownerUuid);
             if (entityWithOwnerUuid instanceof LivingEntity) {
-                this.owner = (LivingEntity)entityWithOwnerUuid;
+                this.owner = (LivingEntity) entityWithOwnerUuid;
             }
         }
 
@@ -100,7 +101,6 @@ public abstract class ShulkerBulletMixin extends Entity {
      * Calculates whether the bullet can hit the specified entity.
      *
      * @param entity The entity.
-     *
      * @return true if the bullet can hit the specified entity; otherwise, false.
      */
     private boolean canHit(Entity entity) {
